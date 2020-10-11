@@ -1,0 +1,3 @@
+Michael Jordan	mj	123321
+Prince	prince	332132
+John Frusciante	jfrusciante	1233321
