@@ -10,55 +10,47 @@ import (
 	"syscall"
 )
 
-func home(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("tpl/home.html")
+var posts = map[string][]byte{
+	"how-this-works": []byte("something"),
+}
 
-	t.Execute(w, nil)
+func me(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "About myself")
+}
+
+// once deployed move the parser outside
+func home(w http.ResponseWriter, r *http.Request) {
+	path := r.URL.Path[1:]
+	if _, ok := posts[path]; !ok && len(path) > 0 {
+		http.NotFound(w, r)
+		return
+	}
+
+	vars := struct {
+		host string
+	}{
+		"https://wmsan.dev",
+	}
+
+	var t *template.Template
+	if len(path) > 0 {
+		t, _ = template.ParseFiles("tpl/post.html")
+		t.Execute(w, vars)
+		return
+	}
+
+	t, _ = template.ParseFiles("tpl/home.html")
+	t.Execute(w, vars)
 }
 
 func main() {
-	users := Users()
-	session := Session{}
 	handler := http.NewServeMux()
+
+	static := http.FileServer(http.Dir("./assets"))
+	handler.Handle("/assets/", http.StripPrefix("/assets/", static))
+
 	handler.HandleFunc("/", home)
-	handler.HandleFunc("/auth", func(w http.ResponseWriter, r *http.Request) {
-		var result string
-		t, _ := template.ParseFiles("tpl/auth.html")
-
-		if r.Method != http.MethodPost {
-			t.Execute(w, result)
-			return
-		}
-
-		username := r.FormValue("username")
-		passw := r.FormValue("passw")
-
-		user, ok := users[username]
-		if !ok {
-			w.WriteHeader(http.StatusUnauthorized)
-			t.Execute(w, "Invalid username or password")
-			return
-		}
-
-		err := user.CheckPassw(passw)
-		if err != nil {
-			w.WriteHeader(http.StatusUnauthorized)
-			t.Execute(w, "Invalid username or password")
-			return
-		}
-
-		_, noCookie := r.Cookie("_ss")
-		if noCookie != nil {
-			http.SetCookie(w, &http.Cookie{
-				Name:  "_ss",
-				Value: session.GenerateUuid(),
-			})
-		}
-
-		// generate session id
-		// store session id local and on browser
-		t.Execute(w, "Logged :D")
-	})
+	handler.HandleFunc("/me", me)
 
 	s := http.Server{
 		Addr:    ":8080",
@@ -67,6 +59,7 @@ func main() {
 
 	go func() {
 		fmt.Println("listening on " + s.Addr)
+		//s.ListenAndServeTLS("/etc/letsencrypt/live/wmsan.dev/fullchain.pem", "/etc/letsencrypt/live/wmsan.dev/privkey.pem")
 		s.ListenAndServe()
 	}()
 
