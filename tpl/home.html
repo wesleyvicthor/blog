@@ -2,23 +2,44 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Wesley Mendes - Software Engineering</title>
-	<meta name="description" content="Software Engineering Golang Programming">
+	<title>Wesley Victhor- Software Engineering</title>
+	<meta name="description" content="Software Engineering Golang Programming Code Craft Principles">
 	<meta name="keywords" content="Golang, PHP, Software Engineer, Development, PostgreSQL">
 	<meta name="author" content="Wesley Victhor Mendes">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+	<link rel="manifest" href="/assets/site.webmanifest">
+	<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180293609-1"></script>
+	<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-180293609-1');
+	</script>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/base-min.css">
+	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+    {{/*	<link rel="stylesheet" href="/assets/pure.css" />*/}}
+{{/*	<link rel="stylesheet" href="/assets/pure-grid.css" />*/}}
+
 	<style>
 		* {
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
 			box-sizing: border-box;
+			font-family: 'Merriweather', serif;
 		}
 
 		a {
 			text-decoration: none;
-			color: rgb(61, 146, 201);
+			/*color: rgb(61, 146, 201);*/
+			color: inherit;
 		}
 		a:hover,
 		a:focus {
@@ -29,25 +50,19 @@
 			font-weight: 100;
 		}
 
-		/* LAYOUT CSS */
-		.pure-img-responsive {
-			max-width: 100%;
-			height: auto;
-		}
-
-		#container {
+		#layout {
 			padding: 0;
 		}
 
-		header {
+		.header {
 			text-align: center;
 			top: auto;
 			margin: 3em auto;
 		}
 
-		aside {
-			background: rgb(61, 79, 93);
-			color: #fff;
+		.sidebar {
+			background: rgba(255,226,0,.2);
+			color: #797979;
 		}
 
 		.brand-title,
@@ -62,17 +77,7 @@
 			color: rgb(176, 202, 219);
 		}
 
-		nav {
-			margin: 0;
-			padding: 0;
-			list-style: none;
-		}
-		nav ul li {
-			display: inline-block;
-			*display: inline;
-			zoom: 1;
-		}
-		.nav ul li a {
+		.nav-item a {
 			background: transparent;
 			border: 2px solid rgb(176, 202, 219);
 			color: #fff;
@@ -81,23 +86,8 @@
 			text-transform: uppercase;
 			font-size: 85%;
 		}
-		.nav ul li a:hover,
-		.nav ul li a:focus {
-			border: 2px solid rgb(61, 146, 201);
-			text-decoration: none;
-		}
 
-		.content-subhead {
-			text-transform: uppercase;
-			color: #aaa;
-			border-bottom: 1px solid #eee;
-			padding: 0.4em 0;
-			font-size: 80%;
-			font-weight: 500;
-			letter-spacing: 0.1em;
-		}
-
-		main {
+		.content {
 			padding: 2em 1em 0;
 		}
 
@@ -109,13 +99,7 @@
 			color: #222;
 			margin-bottom: 0.2em;
 		}
-		.post-avatar {
-			border-radius: 50px;
-			float: right;
-			margin-left: 1em;
-		}
 		.post-description {
-			font-family: Georgia, "Cambria", serif;
 			color: #444;
 			line-height: 1.8em;
 		}
@@ -125,125 +109,148 @@
 			margin: 0;
 		}
 
-		.post-category {
-			margin: 0 0.1em;
-			padding: 0.3em 1em;
-			color: #fff;
-			background: #999;
-			font-size: 80%;
+		.footer span {
+			color: #ccc;
 		}
-		.post-category-design {
-			background: #5aba59;
-		}
-		.post-category-pure {
-			background: #4d85d1;
-		}
-		.post-category-yui {
-			background: #8156a7;
-		}
-		.post-category-js {
-			background: #df2d4f;
-		}
-
-		.post-images {
-			margin: 1em 0;
-		}
-		.post-image-meta {
-			margin-top: -3.5em;
-			margin-left: 1em;
-			color: #fff;
-			text-shadow: 0 1px 1px #333;
-		}
-
-		footer {
+		.footer {
 			padding: 1em 0;
 		}
-		footer a {
+		.footer a {
 			color: #ccc;
 			font-size: 80%;
 		}
-		footer .pure-menu a:hover,
-		footer .pure-menu a:focus {
+		.pure-menu a:hover,
+		.pure-menu a:focus {
 			background: none;
+		}
+		.pure-menu ul {
+			padding: 0;
 		}
 
 		@media (min-width: 48em) {
-			main {
+			.content {
 				padding: 2em 3em 0;
 				margin-left: 25%;
 			}
 
-			header {
-				margin: 80% 2em 0;
+			.header {
+				margin: 60% 2em 0;
 				text-align: right;
 			}
 
-			aside {
+			.sidebar {
 				position: fixed;
 				top: 0;
 				bottom: 0;
 			}
 
-			footer {
+			.footer {
 				text-align: center;
 			}
 		}
 	</style>
 </head>
-<body id="container">
-<div class="pure-g">
-	<aside class="pure-u-1 pure-u-md-1-4">
-		<h1 class="brand-title">Travel, Programming and Craft</h1>
-		<p class="brand-tagline">Hey, my name is <strong>Wesley</strong>!</p>
-		<p>and at this site you will find my background on software engineering</p>
-		<p>own options about life and their idiosyncrasies as well as many other ways of</p>
-		<p>sharing my life experience on earth</p>
-		<article>
-			Wesley has over a decade of software engineering experience in different
-			markets. He has helped teams and startups to achieve their most potential
-			through the importance of crafting quality software.
-			He composes the HelloFresh team in Berlin, Germany
-			<a>more</a>
-		</article>
-		<nav>
+<body itemscope itemtype="https://schema.org/WebPage">
+<div id="layout" class="pure-g">
+	<div class="sidebar pure-u-1 pure-u-md-1-4">
+		<div class="header">
+			<h1 class="brand-title">Life, Programming and Craft</h1>
+			<p class="brand-tagline">Hey, my name is <strong>Wesley</strong>!</p>
+			<p>and at this site you will find my background on software engineering
+			own options about life and their idiosyncrasies as well as many other ways of
+			sharing my life experience on earth</p>
+		</div>
+		<nav class="pure-menu pure-menu-horizontal">
 			<ul>
-				<li><a href="">About</a></li>
-				<li><a href="">Posts</a></li>
-				<li><a href="">Contact</a></li>
-				<li><a href="">RSS</a></li>
+				<li class="pure-menu-item"><a class="pure-menu-link" >About</a></li>
 			</ul>
 		</nav>
-	</aside>
-	<main class="pure-u-1 pure-u-md-3-4">
-		<div>
-			<section class="post">
-				<header class="post-header">
-					<h2 class="post-title">
-						Options Pattern
-					</h2>
-				</header>
-				<div class="post-description">
-					<p>
-						Lets set some options, evolve to Factories, Decorate our clients and build our DSL
-					</p>
-				</div>
-			</section>
-
-			<section class="post">
-				<header class="post-header">
-					<h2 class="post-title">
-						Options Pattern
-					</h2>
-				</header>
-				<div class="post-description">
-					<p>
-						Lets set some options, evolve to Factories, Decorate our clients and build our DSL
-					</p>
-				</div>
-			</section>
+		<div class="footer">
+			<nav class="pure-menu pure-menu-horizontal">
+				<span>wsan 2020</span>
+				<ul>
+					<li class="pure-menu-item"><a href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a></li>
+					<li class="pure-menu-item"><a href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a></li>
+					<li class="pure-menu-item"><a href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
+					<li class="pure-menu-item"><a href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
+					<li class="pure-menu-item"><a href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a></li>
+				</ul>
+			</nav>
 		</div>
-	</main>
-	<footer>Crafting Software by wsan</footer>
+	</div>
+	<div class="content pure-u-1 pure-u-md-3-4">
+		<div>
+			<div class="posts">
+				<section class="post" itemid="https://wmsan.dev/the-importance-of-commit-messages" itemscope itemtype="https://schema.org/BlogPosting">
+					<header class="post-header" itemprop="description">
+						<h2 class="post-title" itemprop="headline">
+							Give the deserved importance to your commit messages
+						</h2>
+						<h4 itemscope="teaches">Why commit messages are important and why you should invest time on them</h4>
+						<p class="post-meta" itemprop="datePublished">19 Oct, 2020</p>
+					</header>
+					<div class="post-description" itemprop="articleBody">
+						<p>
+							This should be one of the most part of your daily work, if you are working for a large or a small codebase
+							does not matter, dedicate time for telling the history you are sharing with the business of your company.
+						</p>
+					</div>
+				</section>
+
+				<section class="post">
+					<header class="post-header">
+						<h2 class="post-title">
+							<a href="/how-this-works">How this works ?</a>
+						</h2>
+						<h4>Its a dance of Golang, AWS, Let's Encrypt and S3</h4>
+						<p class="post-meta">19 Oct, 2020</p>
+					</header>
+					<div class="post-description">
+						<p>
+							When I decided to start sharing something publicly I took months to choose on which would be the
+							approach that would fit my goal... should I do GitHub Pages, Medium bring up a Wordpress or some staticly
+							generation tool like jenkyll or hugo. As a core software engineer and a passion to craft I chose the
+							not so straight forward path and a more laborious one.
+							This site is a tiny golang application whose you can find here, the content is served from an aws ec2 micro instance. as well know it has only 1GB of
+							RAM and something more than this of storage. which I do not use. The posts are fetched from S3, I also avoid requesting
+							s3 for every made request... It uses PureCSS and Microdata Schema for structuring its information
+						</p>
+					</div>
+				</section>
+
+				<section class="post">
+					<header class="post-header">
+						<h2 class="post-title">
+							Hello World
+						</h2>
+						<h4>I want to share and catalog my lifetime experiences</h4>
+						<p class="post-meta">19 Oct, 2020</p>
+					</header>
+					<div class="post-description">
+						<p>
+							Writing was always a hard task to me, although I deeply write technical documents,
+							I am usually too concerned on how things should sound or look like, style etc. The truth is, I barely know
+							any style and do not have a particular type of text that pleases me. My goal behind this web site
+							is to gather as much as I can and feel appropriate of content which describes my life. My time on earth
+							and share some of my profession, what I like and who I am.
+						</p>
+					</div>
+				</section>
+			</div>
+		</div>
+		<div class="footer">
+			<nav class="pure-menu pure-menu-horizontal">
+				<span>wsan 2020</span>
+				<ul>
+					<li class="pure-menu-item"><a href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a></li>
+					<li class="pure-menu-item"><a href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a></li>
+					<li class="pure-menu-item"><a href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
+					<li class="pure-menu-item"><a href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
+					<li class="pure-menu-item"><a href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
 </div>
 </body>
 </html>
