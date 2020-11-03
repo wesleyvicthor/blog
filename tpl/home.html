@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Wesley Victhor- Software Engineering</title>
-	<meta name="description" content="Software Engineering Golang Programming Code Craft Principles">
-	<meta name="keywords" content="Golang, PHP, Software Engineer, Development, PostgreSQL">
+	<meta name="description" content="Software Engineering, Golang Programming Code and Architecture Principles">
+	<meta name="keywords" content="Golang, PHP, Software Engineer, Web Services, PostgreSQL">
 	<meta name="author" content="Wesley Victhor Mendes">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="msapplication-TileColor" content="#da532c">
@@ -25,155 +25,174 @@
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
-    {{/*	<link rel="stylesheet" href="/assets/pure.css" />*/}}
-{{/*	<link rel="stylesheet" href="/assets/pure-grid.css" />*/}}
+	<style type="text/css">
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: 'Merriweather', serif;
+        }
 
-	<style>
-		* {
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-			font-family: 'Merriweather', serif;
-		}
+        .post-description a {
+            text-decoration: none;
+            color: rgb(61, 146, 201);
+        }
 
-		a {
-			text-decoration: none;
-			/*color: rgb(61, 146, 201);*/
-			color: inherit;
-		}
-		a:hover,
-		a:focus {
-			text-decoration: underline;
-		}
+        a {
+            text-decoration: none;
+            /*color: rgb(61, 146, 201);*/
+            color: inherit;
+        }
 
-		h3 {
-			font-weight: 100;
-		}
+        h1 a:hover {
+            text-decoration: none;
+        }
 
-		#layout {
-			padding: 0;
-		}
+        a:hover,
+        a:focus {
+            text-decoration: underline;
+        }
 
-		.header {
-			text-align: center;
-			top: auto;
-			margin: 3em auto;
-		}
+        h3 {
+            font-weight: 100;
+        }
 
-		.sidebar {
-			background: rgba(255,226,0,.2);
-			color: #797979;
-		}
+        #layout {
+            padding: 0;
+        }
 
-		.brand-title,
-		.brand-tagline {
-			margin: 0;
-		}
-		.brand-title {
-			text-transform: uppercase;
-		}
-		.brand-tagline {
-			font-weight: 300;
-			color: rgb(176, 202, 219);
-		}
+        .header {
+            text-align: center;
+            top: auto;
+            margin: 3em auto;
+        }
 
-		.nav-item a {
-			background: transparent;
-			border: 2px solid rgb(176, 202, 219);
-			color: #fff;
-			margin-top: 1em;
-			letter-spacing: 0.05em;
-			text-transform: uppercase;
-			font-size: 85%;
-		}
+        .sidebar {
+            background: #feffdc;
+            color: #797979;
+        }
 
-		.content {
-			padding: 2em 1em 0;
-		}
+        .brand-title,
+        .brand-tagline {
+            margin: 0;
+        }
 
-		.post {
-			padding-bottom: 2em;
-		}
-		.post-title {
-			font-size: 2em;
-			color: #222;
-			margin-bottom: 0.2em;
-		}
-		.post-description {
-			color: #444;
-			line-height: 1.8em;
-		}
-		.post-meta {
-			color: #999;
-			font-size: 90%;
-			margin: 0;
-		}
+        .brand-title {
+            text-transform: uppercase;
+            color: #c3c36e;
+        }
 
-		.footer span {
-			color: #ccc;
-		}
-		.footer {
-			padding: 1em 0;
-		}
-		.footer a {
-			color: #ccc;
-			font-size: 80%;
-		}
-		.pure-menu a:hover,
-		.pure-menu a:focus {
-			background: none;
-		}
-		.pure-menu ul {
-			padding: 0;
-		}
+        .brand-tagline {
+            font-weight: 300;
+            color: #988400
+        }
 
-		@media (min-width: 48em) {
-			.content {
-				padding: 2em 3em 0;
-				margin-left: 25%;
-			}
+        .nav-item a {
+            background: transparent;
+            border: 2px solid rgb(176, 202, 219);
+            color: #fff;
+            margin-top: 1em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 85%;
+        }
 
-			.header {
-				margin: 60% 2em 0;
-				text-align: right;
-			}
+        .content {
+            padding: 2em 1em 0;
+        }
 
-			.sidebar {
-				position: fixed;
-				top: 0;
-				bottom: 0;
-			}
+        .post {
+            padding-bottom: 2em;
+        }
 
-			.footer {
-				text-align: center;
-			}
-		}
+        .post-title {
+            font-size: 2em;
+            color: #222;
+            margin-bottom: 0.2em;
+        }
+
+        .post-description {
+            color: #444;
+            line-height: 1.8em;
+            font-weight: 100;
+        }
+
+        .post-meta {
+            color: #999;
+            font-size: 90%;
+            margin: 0;
+        }
+
+        .footer span {
+            color: #ccc;
+        }
+
+        .footer {
+            padding: 1em 0;
+        }
+
+        .footer a {
+            color: #797979;
+            font-size: 80%;
+        }
+
+        .pure-menu a:hover,
+        .pure-menu a:focus {
+            background: none;
+        }
+
+        .pure-menu ul {
+            padding: 0;
+        }
+
+        @media (min-width: 48em) {
+            .content {
+                padding: 2em 3em 0;
+                margin-left: 25%;
+            }
+
+            .header {
+                margin: 35% 2em 0;
+                text-align: right;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+            }
+
+            .footer {
+                text-align: center;
+            }
+        }
 	</style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
 <div id="layout" class="pure-g">
 	<div class="sidebar pure-u-1 pure-u-md-1-4">
 		<div class="header">
-			<h1 class="brand-title">Life, Programming and Craft</h1>
-			<p class="brand-tagline">Hey, my name is <strong>Wesley</strong>!</p>
-			<p>and at this site you will find my background on software engineering
-			own options about life and their idiosyncrasies as well as many other ways of
-			sharing my life experience on earth</p>
+			<h1 style="margin-bottom: 2em;" class="brand-title">Life Programming And Craft</h1>
+			<p class="brand-tagline">Hi, I am <strong>Wesley</strong></p>
+			<p style="line-height: 1.9em; font-weight: 400;">here you will find my interests on software engineering,
+				own opinions about life and random thoughts</p>
 		</div>
-		<nav class="pure-menu pure-menu-horizontal">
-			<ul>
-				<li class="pure-menu-item"><a class="pure-menu-link" >About</a></li>
-			</ul>
-		</nav>
-		<div class="footer">
-			<nav class="pure-menu pure-menu-horizontal">
-				<span>wsan 2020</span>
-				<ul>
-					<li class="pure-menu-item"><a href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a></li>
-					<li class="pure-menu-item"><a href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a></li>
-					<li class="pure-menu-item"><a href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
-					<li class="pure-menu-item"><a href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
-					<li class="pure-menu-item"><a href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a></li>
+		<div class="footer" style="padding: 5em 0; bottom: 0px;">
+			<nav class="pure-menu">
+				<ul class="pure-menu-list">
+					<li class="pure-menu-item">
+						<a target="_blank" href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a>
+					</li>
+					<li class="pure-menu-item">
+						<a target="_blank" href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a>
+					</li>
+					<li class="pure-menu-item">
+						<a target="_blank" href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
+					<li class="pure-menu-item">
+						<a target="_blank" href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
+					<li class="pure-menu-item">
+						<a target="_blank" href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -205,15 +224,11 @@
 						<h4>Its a dance of Golang, AWS, Let's Encrypt and S3</h4>
 						<p class="post-meta">19 Oct, 2020</p>
 					</header>
-					<div class="post-description">
+					<div style="font-weight: 100; line-height: 1.9em" class="post-description">
 						<p>
 							When I decided to start sharing something publicly I took months to choose on which would be the
 							approach that would fit my goal... should I do GitHub Pages, Medium bring up a Wordpress or some staticly
-							generation tool like jenkyll or hugo. As a core software engineer and a passion to craft I chose the
-							not so straight forward path and a more laborious one.
-							This site is a tiny golang application whose you can find here, the content is served from an aws ec2 micro instance. as well know it has only 1GB of
-							RAM and something more than this of storage. which I do not use. The posts are fetched from S3, I also avoid requesting
-							s3 for every made request... It uses PureCSS and Microdata Schema for structuring its information
+							generation tool like jenkyll or hugo...
 						</p>
 					</div>
 				</section>
@@ -229,24 +244,21 @@
 					<div class="post-description">
 						<p>
 							Writing was always a hard task to me, although I deeply write technical documents,
-							I am usually too concerned on how things should sound or look like, style etc. The truth is, I barely know
-							any style and do not have a particular type of text that pleases me. My goal behind this web site
-							is to gather as much as I can and feel appropriate of content which describes my life. My time on earth
-							and share some of my profession, what I like and who I am.
+							I am usually too concerned on how things should sound or look like, style...
 						</p>
 					</div>
 				</section>
 			</div>
 		</div>
-		<div class="footer">
+		<div class="footer" style="text-align: center">
+			<span>wsan 2020</span>
 			<nav class="pure-menu pure-menu-horizontal">
-				<span>wsan 2020</span>
-				<ul>
-					<li class="pure-menu-item"><a href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a></li>
-					<li class="pure-menu-item"><a href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a></li>
-					<li class="pure-menu-item"><a href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
-					<li class="pure-menu-item"><a href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
-					<li class="pure-menu-item"><a href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a></li>
+				<ul class="pure-menu-list">
+					<li class="pure-menu-item"><a target="_blank" href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a></li>
+					<li class="pure-menu-item"><a target="_blank" href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a></li>
+					<li class="pure-menu-item"><a target="_blank" href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
+					<li class="pure-menu-item"><a target="_blank" href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
+					<li class="pure-menu-item"><a target="_blank" href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a></li>
 				</ul>
 			</nav>
 		</div>

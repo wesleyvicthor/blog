@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -15,7 +16,7 @@ var posts = map[string][]byte{
 }
 
 func me(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "About myself")
+	_, _ = fmt.Fprint(w, "About myself")
 }
 
 // once deployed move the parser outside
@@ -26,21 +27,26 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	post := Post{}
+
 	vars := struct {
-		host string
+		Host  string
+		Post  Post
+		Posts []*Post
 	}{
-		"https://wmsan.dev",
+		Host: "https://wmsan.dev",
+		Post: post,
 	}
 
 	var t *template.Template
 	if len(path) > 0 {
 		t, _ = template.ParseFiles("tpl/post.html")
-		t.Execute(w, vars)
+		must(t.Execute(w, vars))
 		return
 	}
 
 	t, _ = template.ParseFiles("tpl/home.html")
-	t.Execute(w, vars)
+	must(t.Execute(w, vars))
 }
 
 func main() {
@@ -60,12 +66,18 @@ func main() {
 	go func() {
 		fmt.Println("listening on " + s.Addr)
 		//s.ListenAndServeTLS("/etc/letsencrypt/live/wmsan.dev/fullchain.pem", "/etc/letsencrypt/live/wmsan.dev/privkey.pem")
-		s.ListenAndServe()
+		must(s.ListenAndServe())
 	}()
 
 	term := make(chan os.Signal)
 	signal.Notify(term, os.Interrupt, syscall.SIGTERM)
 	<-term
-	s.Shutdown(context.Background())
+	must(s.Shutdown(context.Background()))
 	fmt.Println("Server Down")
+}
+
+func must(err error) {
+	if err != nil {
+		log.Fatal(err)
+	}
 }
