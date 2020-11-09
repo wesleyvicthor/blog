@@ -58,7 +58,7 @@ func (s *Session) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		})
 	}
 
-	// generate session id
-	// store session id local and on browser
+	// generate session ID
+	// store session ID local and on browser
 	t.Execute(w, "Logged :D")
 }

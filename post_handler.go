@@ -40,7 +40,7 @@ func (p *BlogPost) Delete(id int) {
 func register() {
 	resource := &BlogPost{}
 	routes := Routes{
-		"/posts/:id/:name/:ref/:date": resource,
+		"/posts/:ID/:name/:ref/:datetime": resource,
 		"/posts":                      resource,
 	}
 

@@ -11,42 +11,41 @@ import (
 	"syscall"
 )
 
-var posts = map[string][]byte{
-	"how-this-works": []byte("something"),
+var t *template.Template
+
+type Page struct {
+	Host  string
+	Post  Post
+	Posts []*Post
+}
+
+func init() {
+	t, _ = template.ParseFiles("tpl/home.html", "tpl/post.html")
 }
 
 func me(w http.ResponseWriter, r *http.Request) {
 	_, _ = fmt.Fprint(w, "About myself")
 }
 
-// once deployed move the parser outside
+// once deployed move template parser outside
 func home(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
-	if _, ok := posts[path]; !ok && len(path) > 0 {
+	if len(path) == 0 {
+		must(t.ExecuteTemplate(w, "home.html", Page{Host: "https://wmsan.dev"}))
+		return
+	}
+	f, err := os.Open(path + ".md")
+	if err != nil {
 		http.NotFound(w, r)
 		return
 	}
 
-	post := Post{}
-
-	vars := struct {
-		Host  string
-		Post  Post
-		Posts []*Post
-	}{
+	page := Page{
 		Host: "https://wmsan.dev",
-		Post: post,
+		Post: NewPost(f),
 	}
 
-	var t *template.Template
-	if len(path) > 0 {
-		t, _ = template.ParseFiles("tpl/post.html")
-		must(t.Execute(w, vars))
-		return
-	}
-
-	t, _ = template.ParseFiles("tpl/home.html")
-	must(t.Execute(w, vars))
+	must(t.ExecuteTemplate(w, "post.html", page))
 }
 
 func main() {
