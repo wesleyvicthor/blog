@@ -7,7 +7,7 @@ the approach that would fit my goal, should I do GitHub Pages, Medium, bring up 
 some statically blog tool like Jenkyll or Hugo. As a core software Engineer, and a passion to craft I
 chose the not so straight forward path and a more laborious one.
 
-This site is a tiny golang application whose you can find <a target="_blank" href="https://github.com/wesleyvicthor/blog">here</a>, the content is served from
+This site is a tiny golang application whose you can find https://github.com/wesleyvicthor/blog, the content is served from
 an AWS EC2 Micro instance. It has only 1GB of RAM and something more than this of storage — which I do not use.
 The posts were supposed to be fetched from S3, maybe soon... It uses PureCSS and Microdata Schema for structuring its information.
 

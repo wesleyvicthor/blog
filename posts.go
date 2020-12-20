@@ -45,5 +45,6 @@ func (p Post) Date() string {
 }
 
 func (p Post) Body() []string {
+	// use template.HTML instead and deprecate md in order of html
 	return strings.Split(p.content, "\n\n")
 }
