@@ -1,43 +1,19 @@
 How this works ?
-Its a dance of Golang, AWS, Let's Encrypt and S3
-2020-10-19
+It's a dance of Golang, AWS and Let's Encrypt
+2020-12-20
 
 When I decided to start sharing something publicly I took months to choose on which would be
-the
-approach that would fit my goal... should I do GitHub Pages, Medium bring up a Wordpress or
-some staticly
-generation tool like jenkyll or hugo. As a core software engineer and a passion to craft I
-chose the
-not so straight forward path and a more laborious one.
+the approach that would fit my goal, should I do GitHub Pages, Medium, bring up a Wordpress, or
+some statically blog tool like Jenkyll or Hugo. As a core software Engineer, and a passion to craft I
+chose the not so straight forward path and a more laborious one.
 
-This site is a tiny golang application whose you can find here, the content is served from
-an aws ec2 micro instance. as well know it has only 1GB of
-RAM and something more than this of storage. which I do not use. The posts are fetched from
-S3, I also avoid requesting
-s3 for every made request... It uses PureCSS and Microdata Schema
+This site is a tiny golang application whose you can find <a target="_blank" href="https://github.com/wesleyvicthor/blog">here</a>, the content is served from
+an AWS EC2 Micro instance. It has only 1GB of RAM and something more than this of storage — which I do not use.
+The posts were supposed to be fetched from S3, maybe soon... It uses PureCSS and Microdata Schema for structuring its information.
 
-for structuring its information
-It uses PureCSS and Microdata Schema for structuring its informationIt uses PureCSS and
-Microdata Schema for structuring its informationIt uses PureCSS and Microdata Schema for
-structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
+Configure Let's Encrypt took a bit longer as the support on AMI 2 Image from Amazon was not so straight forward
+in order to enable snapd to support Let's Encrypt I had to fork https://github.com/albuild/snap and fix the version to download
+the right release for the environment.
 
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its informationIt uses PureCSS and
-Microdata Schema for structuring its informationIt uses PureCSS and Microdata Schema for
-structuring its informationIt uses PureCSS and Microdata Schema for structuring its
-information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
-It uses PureCSS and Microdata Schema for structuring its information
+There are a few more things which I want to add such as a security mechanism for requests and a some rss,
+but for the moment I think it attends the needs.
