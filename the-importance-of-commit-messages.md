@@ -21,8 +21,8 @@ they care too much in coding and less about the business and the team  — don't
 This may work on startups or small code bases but on well distributed systems and teams, this is the
 key to be unproductive.
 
-How we can do better ?
-How we can allow our team to be more productive by just commit messaging ?
+Can we do better ?
+Can we allow our team to become more productive by just commit messaging ?
 
 Document motivation, dedicate time for telling the history you are sharing with the business of your company,
 commit messages should reflect what motivated the changes you made and not what you changed
