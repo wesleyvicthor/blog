@@ -16,16 +16,18 @@ An easy spot to identify those degradations is on code delivery, Version Control
 not only the responsibility to keep a history of changes but also to tell a history of evolution,
 — or to better define —, to express the motivation behind an enterprise's product evolvement.
 
-Mostly developers tend to not give the right importance to commit messages because
+Most developers tend to not give the right importance to commit messages because
 they care too much in coding and less about the business and the team  — don't be this developer.
 This may work on startups or small code bases but on well distributed systems and teams, this is the
-key to be unproductive.
+key of unproductiveness.
 
 Can we do better ?
 Can we allow our team to become more productive by just commit messaging ?
 
+Yes we can!
+
 Document motivation, dedicate time for telling the history you are sharing with the business of your company,
-commit messages should reflect what motivated the changes you made and not what you changed
+commit messages should reflect what motivated the changes you made and not what you changed.
 eg: add new json marshaling, extracted handler to new file, provided new list of customers.
 By looking at changed files they already tell me that, so why be so redundant and unspecific about the changes ?
 The mainly drawback of such messages is that they say nothing about the motivation, the product feature's state,
@@ -35,9 +37,9 @@ business works and why things works as they do.
 Commit messages should be covered of references, motivation and answer questions like:
 Why I am adding that ?
 Which functionality is being affected and why ?
-Does this change resulted from a previous change ? then reference it.
+Does this change resulted from a previous change ? which one ?
 
-They should express a business intention behind the implementation, so how could we use the above example
+Messages should express a business intention behind the implementation, so how could we use the above example
 to express our delivery ?
 
 Instead of: "add new json marshaling"
@@ -50,17 +52,17 @@ preventing data type overflows."
 Instead of: "extracted handler to new file"
 
 Try:  
-"handler file were mixing more than enough of handlers,
+"handler file was mixing too many handlers,
 this was causing maintenance confusion and breaking
-single responsibility principle. this extract handlers to
-its own file, create a handler type to better identify them implementing
+single responsibility principle. hereby handlers are extracted
+to its own file. handler types are also defined to better identify them implementing
 http.Handler interface."
 
 Instead of: "provide new list of customers"
 
 Try:  
-"customer list fix implemented by 30f960e was causing
-the list to be unsorted, this fix the sort using the customer's
+"customer list fix, implemented by 30f960e was causing
+the list to be unsorted, this commit fix the sort using the customer's
 last name."
 
 Truth be told, it's not an easy task for a developer who just wants to delivery a feature document its changes in this way,
@@ -68,9 +70,10 @@ the pressure and the will to delivery speaks higher, and the quality of the mess
 the build. Give it a try, document the motivation, spread the word to your team, and you will see how positively this can
 affect the overall productivity.
 
-The taste of digging deeper code bases trying to understand why the previous engineer did what is seen while saying
+The taste of digging deeper code bases, trying to understand why the previous engineer did what you see while committed as
 "add new discount rule" will not be bitter anymore and will allow the reason be directed to the domain owners in a more
-confident and quicker way than ever.
+confident and quicker way than ever. Not only, it will assist you firmly when having to provide clarifications over such
+modifications.
 
 
 

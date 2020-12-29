@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"html/template"
 	"io"
 	"os"
 	"strings"
@@ -44,7 +45,11 @@ func (p Post) Date() string {
 	return fmt.Sprintf("%s %d, %d", t.Month().String()[:3], t.Day(), t.Year())
 }
 
-func (p Post) Body() []string {
-	// use template.HTML instead and deprecate md in order of html
-	return strings.Split(p.content, "\n\n")
+func (p Post) Body() []template.HTML {
+	var b []template.HTML
+	for _, s := range strings.Split(p.content, "\n\n") {
+		b = append(b, template.HTML(s))
+	}
+
+	return b
 }

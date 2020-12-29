@@ -23,18 +23,17 @@ func init() {
 	t, _ = template.ParseFiles("tpl/home.html", "tpl/post.html")
 }
 
-func me(w http.ResponseWriter, r *http.Request) {
+func me(w http.ResponseWriter, _ *http.Request) {
 	_, _ = fmt.Fprint(w, "About myself")
 }
 
-// once deployed move template parser outside
 func home(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
 	if len(path) == 0 {
 		must(t.ExecuteTemplate(w, "home.html", Page{Host: "https://wmsan.dev"}))
 		return
 	}
-	f, err := os.Open(path + ".md")
+	f, err := os.Open(path + ".html")
 	if err != nil {
 		http.NotFound(w, r)
 		return
@@ -57,15 +56,22 @@ func main() {
 	handler.HandleFunc("/", home)
 	handler.HandleFunc("/me", me)
 
+	port := os.Getenv("B_ADDR")
 	s := http.Server{
-		Addr:    ":8080",
+		Addr:    port,
 		Handler: handler,
 	}
 
 	go func() {
 		fmt.Println("listening on " + s.Addr)
-		//s.ListenAndServeTLS("/etc/letsencrypt/live/wmsan.dev/fullchain.pem", "/etc/letsencrypt/live/wmsan.dev/privkey.pem")
-		must(s.ListenAndServe())
+
+		if os.Getenv("B_ENV") == "dev" {
+			must(s.ListenAndServe())
+
+			return
+		}
+
+		must(s.ListenAndServeTLS(os.Getenv("B_SSL_FULLCHAIN"), os.Getenv("B_SSL_PRIVKEY")))
 	}()
 
 	term := make(chan os.Signal)
