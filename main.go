@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-var t *template.Template
+var tpl *template.Template
 
 type Page struct {
 	Year  int
@@ -30,17 +30,13 @@ func NewPage(post Post) *Page {
 }
 
 func init() {
-	t, _ = template.ParseFiles("tpl/home.html", "tpl/post.html")
-}
-
-func me(w http.ResponseWriter, _ *http.Request) {
-	_, _ = fmt.Fprint(w, "About myself")
+	tpl, _ = template.ParseFiles("tpl/home.html", "tpl/post.html")
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
 	if len(path) == 0 {
-		must(t.ExecuteTemplate(w, "home.html", NewPage(Post{})))
+		must(tpl.ExecuteTemplate(w, "home.html", NewPage(Post{})))
 		return
 	}
 
@@ -50,7 +46,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	must(t.ExecuteTemplate(w, "post.html", NewPage(NewPost(f))))
+	must(tpl.ExecuteTemplate(w, "post.html", NewPage(NewPost(f))))
 }
 
 func main() {
@@ -60,7 +56,6 @@ func main() {
 	handler.Handle("/assets/", http.StripPrefix("/assets/", static))
 
 	handler.HandleFunc("/", home)
-	handler.HandleFunc("/me", me)
 
 	port := os.Getenv("B_ADDR")
 	s := http.Server{

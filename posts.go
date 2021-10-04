@@ -42,6 +42,10 @@ func NewPost(f *os.File) Post {
 func (p Post) Date() string {
 	t, _ := time.Parse("2006-01-02", p.datetime)
 
+	if t.IsZero() {
+		return ""
+	}
+
 	return fmt.Sprintf("%s %d, %d", t.Month().String()[:3], t.Day(), t.Year())
 }
 
