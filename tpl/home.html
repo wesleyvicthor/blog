@@ -1,31 +1,36 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Wesley Victhor- Software Engineering</title>
-	<meta name="description" content="Software Engineering, Golang Programming Code and Architecture Principles">
-	<meta name="keywords" content="Golang, PHP, Software Engineer, Web Services, PostgreSQL">
-	<meta name="author" content="Wesley Victhor Mendes">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="theme-color" content="#ffffff">
-	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-	<link rel="manifest" href="/assets/site.webmanifest">
-	<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180293609-1"></script>
-	<script>
+    <meta charset="UTF-8">
+    <title>Wesley Victhor - Software Engineering</title>
+    <meta name="description" content="Software Engineering, Golang Programming Code and Architecture Principles">
+    <meta name="keywords" content="Golang, PHP, Software Engineer, Web Services, PostgreSQL">
+    <meta name="author" content="Wesley Victhor Mendes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180293609-1"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'UA-180293609-1');
-	</script>
-	<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
-	<style type="text/css">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+          integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+    <style>
         * {
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
@@ -62,9 +67,9 @@
         }
 
         .header {
-            text-align: center;
+            text-align: right;
             top: auto;
-            margin: 3em auto;
+            margin: 15% 2em 0;
         }
 
         .sidebar {
@@ -98,6 +103,7 @@
         }
 
         .content {
+            background: #f9fcff;
             padding: 2em 1em 0;
         }
 
@@ -107,8 +113,12 @@
 
         .post-title {
             font-size: 2em;
-            color: #222;
+            color: #444;
             margin-bottom: 0.2em;
+        }
+
+        .post-header h4 {
+            color: #444;
         }
 
         .post-description {
@@ -121,6 +131,17 @@
             color: #999;
             font-size: 90%;
             margin: 0;
+        }
+
+        .sidebar .header {
+            flex: 1 0 auto;
+        }
+
+        .sidebar .footer {
+            margin-top: 20%;
+            padding: 0;
+            flex-shrink: 0;
+            text-align: center;
         }
 
         .footer span {
@@ -156,11 +177,13 @@
             }
 
             .header {
-                margin: 35% 2em 0;
+                margin: 30% 2em 0;
                 text-align: right;
             }
 
             .sidebar {
+                display: flex;
+                flex-direction: column;
                 position: fixed;
                 top: 0;
                 bottom: 0;
@@ -170,103 +193,121 @@
                 text-align: center;
             }
         }
-	</style>
+    </style>
 </head>
 <body style="font-size: 120%" itemscope itemtype="https://schema.org/WebPage">
 <div id="layout" class="pure-g">
-	<div class="sidebar pure-u-1 pure-u-md-1-4">
-		<div class="header">
-			<h1 style="margin-bottom: 2em;" class="brand-title"><a href="/">Life Programming And Craft</a></h1>
-			<p class="brand-tagline">Hi, I am <strong>Wesley</strong></p>
-			<p style="line-height: 1.9em; font-weight: 400;">here you will find my interests on software engineering,
-				own opinions about life and random thoughts</p>
-		</div>
-		<div class="footer" style="padding: 10em 0 0; bottom: 0px;">
-			<nav class="pure-menu pure-menu-horizontal">
-				<ul class="pure-menu-list">
-					<li class="pure-menu-item">
-						<a target="_blank" href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a>
-					</li>
-					<li class="pure-menu-item">
-						<a target="_blank" href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a>
-					</li>
-					<li class="pure-menu-item">
-						<a target="_blank" href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
-					<li class="pure-menu-item">
-						<a target="_blank" href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
-					<li class="pure-menu-item">
-						<a target="_blank" href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-	<div class="content pure-u-1 pure-u-md-3-4">
-		<div>
-			<div class="posts">
-				<section class="post" itemid="https://wmsan.dev/the-importance-of-commit-messages" itemscope itemtype="https://schema.org/BlogPosting">
-					<header class="post-header" itemprop="description">
-						<h2 class="post-title" itemprop="headline">
-							<a href="/the-importance-of-commit-messages">Give the deserved importance to your commit messages</a>
-						</h2>
-						<h4 itemscope="teaches">Why commit messages are important and why you should invest time on them</h4>
-						<p class="post-meta" itemprop="datePublished">20 Dec, 2020</p>
-					</header>
-					<div class="post-description" itemprop="articleBody">
-						<p>
-							Could you tell what is the most important part of your daily tasks as a Software Engineer ?
-							It is easy to think of delivering that bug fix on a good time manner, a feature or even...
-						</p>
-					</div>
-				</section>
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <h1 style="margin-bottom: 2em;" class="brand-title"><a href="/">Life Programming And Craft</a></h1>
+            <p class="brand-tagline">Hi, I am <strong>Wesley</strong></p>
+            <p style="line-height: 1.9em; font-weight: 400;">here you will find my interests on software engineering,
+                own opinions about life and random thoughts</p>
+        </div>
+        <div class="footer">
+            <nav class="pure-menu pure-menu-horizontal">
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item">
+                        <a target="_blank" href="https://linkedin.com/in/wesleyvicthor"
+                           class="pure-menu-link">LinkedIn</a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a target="_blank" href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a target="_blank" href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a target="_blank" href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a target="_blank" href="https://www.goodreads.com/user/show/85938821-wesley-victhor"
+                           class="pure-menu-link">Goodreads</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <div class="posts">
+                <section class="post" itemid="https://wmsan.dev/the-importance-of-commit-messages" itemscope
+                         itemtype="https://schema.org/BlogPosting">
+                    <header class="post-header" itemprop="description">
+                        <h2 class="post-title" itemprop="headline">
+                            <a href="/the-importance-of-commit-messages">Give the deserved importance to your commit
+                                messages</a>
+                        </h2>
+                        <h4 itemscope="teaches">Why commit messages are important and why you should invest time on
+                            them</h4>
+                        <p class="post-meta" itemprop="datePublished">20 Dec, 2020</p>
+                    </header>
+                    <div class="post-description" itemprop="articleBody">
+                        <p>
+                            Could you tell what is the most important part of your daily tasks as a Software Engineer ?
+                            It is easy to think of delivering that bug fix on a good time manner, a feature or even...
+                        </p>
+                    </div>
+                </section>
 
-				<section class="post">
-					<header class="post-header">
-						<h2 class="post-title">
-							<a href="/how-this-works">How this works ?</a>
-						</h2>
-						<h4>It's a dance of Golang, AWS and Let's Encrypt</h4>
-						<p class="post-meta">20 Dec, 2020</p>
-					</header>
-					<div style="font-weight: 100; line-height: 1.9em" class="post-description">
-						<p>
-							When I decided to start sharing something publicly I took months to choose on which would be
-							the approach that would fit my goal, should I do GitHub Pages, Medium, bring up a Wordpress, or
-							some statically blog tool like Jenkyll or Hugo
-						</p>
-					</div>
-				</section>
+                <section class="post">
+                    <header class="post-header">
+                        <h2 class="post-title">
+                            <a href="/how-this-works">How this works ?</a>
+                        </h2>
+                        <h4>It's a dance of Golang, AWS and Let's Encrypt</h4>
+                        <p class="post-meta">20 Dec, 2020</p>
+                    </header>
+                    <div style="font-weight: 100; line-height: 1.9em" class="post-description">
+                        <p>
+                            When I decided to start sharing something publicly I took months to choose on which would be
+                            the approach that would fit my goal, should I do GitHub Pages, Medium, bring up a Wordpress,
+                            or
+                            some statically blog tool like Jenkyll or Hugo
+                        </p>
+                    </div>
+                </section>
 
-				<section class="post">
-					<header class="post-header">
-						<h2 class="post-title">
-							<a href="/hello-world">Hello World</a>
-						</h2>
-						<h4>I want to share and catalog my lifetime experiences</h4>
-						<p class="post-meta">19 Oct, 2020</p>
-					</header>
-					<div class="post-description">
-						<p>
-							Writing was always a hard task to me, although I deeply write technical documents,
-							I am usually too concerned on how things should sound or look like, style or if I am complicating too much.
-						</p>
-					</div>
-				</section>
-			</div>
-		</div>
-		<div class="footer" style="text-align: center">
-			<span>wsan 2020</span>
-			<nav class="pure-menu pure-menu-horizontal">
-				<ul class="pure-menu-list pure-u-md-1-3">
-					<li class="pure-menu-item"><a target="_blank" href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a></li>
-					<li class="pure-menu-item"><a target="_blank" href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a></li>
-					<li class="pure-menu-item"><a target="_blank" href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
-					<li class="pure-menu-item"><a target="_blank" href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
-					<li class="pure-menu-item"><a target="_blank" href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+                <section class="post">
+                    <header class="post-header">
+                        <h2 class="post-title">
+                            <a href="/hello-world">Hello World</a>
+                        </h2>
+                        <h4>I want to share and catalog my lifetime experiences</h4>
+                        <p class="post-meta">19 Oct, 2020</p>
+                    </header>
+                    <div class="post-description">
+                        <p>
+                            Writing was always a hard task to me, although I deeply write technical documents,
+                            I am usually too concerned on how things should sound or look like, style or if I am
+                            complicating too much.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="footer" style="text-align: center">
+            <span>wsan 2020 - {{ .Year }}</span>
+            <nav class="pure-menu pure-menu-horizontal">
+                <ul class="pure-menu-list pure-u-md-1-3">
+                    <li class="pure-menu-item"><a target="_blank" title="LinkedIn"
+                                                  href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a>
+                    </li>
+                    <li class="pure-menu-item"><a target="_blank" title="Twitter"
+                                                  href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a>
+                    </li>
+                    <li class="pure-menu-item"><a target="_blank" title="Github" href="https://github.com/wesleyvicthor"
+                                                  class="pure-menu-link">GitHub</a></li>
+                    <li class="pure-menu-item"><a target="_blank" title="Quora"
+                                                  href="https://www.quora.com/profile/Wesley-Victhor"
+                                                  class="pure-menu-link">Quora</a></li>
+                    <li class="pure-menu-item"><a target="_blank" title="GoodReads"
+                                                  href="https://www.goodreads.com/user/show/85938821-wesley-victhor"
+                                                  class="pure-menu-link">Goodreads</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
 </body>
 </html>

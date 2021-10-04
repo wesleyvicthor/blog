@@ -1,47 +1,53 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Wesley Victhor- Software Engineering</title>
-	<meta name="description" content="Software Engineering rehearsals on Golang Application Design">
-	<meta name="keywords" content="Golang, PHP, Software Engineer, Development, PostgreSQL">
-	<meta name="author" content="Wesley Victhor Mendes Santiago">
-	<meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-	<meta name="msapplication-TileColor" content="#da532c">
-	<meta name="theme-color" content="#ffffff">
-	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-	<link rel="manifest" href="/assets/site.webmanifest">
-	<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180293609-1"></script>
-	<script>
+    <meta charset="UTF-8">
+    <title>{{ .Post.Headline }}</title>
+    <meta name="description" content="{{ .Post.About }}">
+    <meta name="keywords" content="Golang, Microservices, Software Engineering, Development, PostgreSQL">
+    <meta name="author" content="Wesley Victhor Mendes Santiago">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#5bbad5">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180293609-1"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
+
         function gtag() {
             dataLayer.push(arguments);
         }
+
         gtag('js', new Date());
         gtag('config', 'UA-180293609-1');
-	</script>
-	<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
-		  integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
-    {{/*	<link rel="stylesheet" href="/assets/pure.css" />*/}}
-    {{/*	<link rel="stylesheet" href="/assets/pure-grid.css" />*/}}
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+          integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+    {{/*
+    <link rel="stylesheet" href="/assets/pure.css"/>
+    */}}
+    {{/*
+    <link rel="stylesheet" href="/assets/pure-grid.css"/>
+    */}}
 
-	<style type="text/css">
-		* {
-			-webkit-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
-			font-family: 'Merriweather', serif;
-		}
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: 'Merriweather', serif;
+        }
 
-		.post-description a {
-			text-decoration: none;
-			color: rgb(61, 146, 201);
-		}
+        .post-description a {
+            text-decoration: none;
+            color: rgb(61, 146, 201);
+        }
 
         a {
             text-decoration: none;
@@ -53,195 +59,213 @@
             text-decoration: none;
         }
 
-		a:hover,
-		a:focus {
-			text-decoration: underline;
-		}
+        a:hover,
+        a:focus {
+            text-decoration: underline;
+        }
 
-		h3 {
-			font-weight: 100;
-		}
+        h3 {
+            font-weight: 100;
+        }
 
-		#layout {
-			padding: 0;
-		}
+        #layout {
+            padding: 0;
+        }
 
-		.header {
-			text-align: center;
-			top: auto;
-			margin: 3em auto;
-		}
+        .header {
+            margin: 30% 2em 0;
+            text-align: right;
+        }
 
-		.sidebar {
-			background: #feffdc;
-			color: #797979;
-		}
+        .sidebar {
+            background: #feffdc;
+            color: #797979;
+        }
 
-		.brand-title,
-		.brand-tagline {
-			margin: 0;
-		}
+        .brand-title,
+        .brand-tagline {
+            margin: 0;
+        }
 
-		.brand-title {
-			text-transform: uppercase;
-			color: #c3c36e;
-		}
+        .brand-title {
+            text-transform: uppercase;
+            color: #c3c36e;
+        }
 
-		.brand-tagline {
+        .brand-tagline {
             font-weight: 300;
             color: #988400
-		}
+        }
 
-		.nav-item a {
-			background: transparent;
-			border: 2px solid rgb(176, 202, 219);
-			color: #fff;
-			margin-top: 1em;
-			letter-spacing: 0.05em;
-			text-transform: uppercase;
-			font-size: 85%;
-		}
+        .nav-item a {
+            background: transparent;
+            border: 2px solid rgb(176, 202, 219);
+            color: #fff;
+            margin-top: 1em;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 85%;
+        }
 
-		.content {
-			padding: 2em 1em 0;
-		}
+        .content {
+            background: #f9fcff;
+            padding: 2em 1em 0;
+        }
 
-		.post {
-			padding-bottom: 2em;
-		}
+        .post {
+            padding-bottom: 2em;
+        }
 
-		.post-title {
-			font-size: 2em;
-			color: #222;
-			margin-bottom: 0.2em;
-		}
+        .post-title {
+            font-size: 2em;
+            color: #444;
+            margin-bottom: 0.2em;
+        }
 
-		.post-description {
-			color: #444;
-			line-height: 1.8em;
-		}
+        .post-header h4 {
+            color: #444;
+        }
 
-		.post-meta {
-			color: #999;
-			font-size: 90%;
-			margin: 0;
-		}
+        .post-description {
+            color: #444;
+            line-height: 1.8em;
+        }
 
-		.footer span {
-			color: #ccc;
-		}
+        .post-meta {
+            color: #999;
+            font-size: 90%;
+            margin: 0;
+        }
 
-		.footer {
-			padding: 1em 0;
-		}
+        .sidebar .header {
+            flex: 1 0 auto;
+        }
 
-		.footer a {
-			color: #797979;
-			font-size: 80%;
-		}
+        .sidebar .footer {
+            margin-top: 20%;
+            padding: 0;
+            flex-shrink: 0;
+            text-align: center;
+        }
 
-		.pure-menu a:hover,
-		.pure-menu a:focus {
-			background: none;
-		}
+        .footer span {
+            color: #ccc;
+        }
 
-		.pure-menu ul {
-			padding: 0;
-		}
+        .footer {
+            padding: 1em 0;
+        }
+
+        .footer a {
+            color: #797979;
+            font-size: 80%;
+        }
+
+        .pure-menu a:hover,
+        .pure-menu a:focus {
+            background: none;
+        }
+
+        .pure-menu ul {
+            padding: 0;
+        }
 
         .footer .pure-menu-horizontal {
             white-space: normal;
         }
 
-		@media (min-width: 48em) {
-			.content {
-				padding: 2em 3em 0;
-				margin-left: 25%;
-			}
+        @media (min-width: 48em) {
+            .content {
+                padding: 2em 3em 0;
+                margin-left: 25%;
+            }
 
-			.header {
-				margin: 35% 2em 0;
-				text-align: right;
-			}
+            .header {
+                margin: 30% 2em 0;
+                text-align: right;
+            }
 
-			.sidebar {
-				position: fixed;
-				top: 0;
-				bottom: 0;
-			}
+            .sidebar {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+            }
 
-			.footer {
-				text-align: center;
-			}
-		}
-	</style>
+            .footer {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body style="font-size: 120%" itemscope itemtype="https://schema.org/WebPage">
 <div id="layout" class="pure-g">
-	<div class="sidebar pure-u-1 pure-u-md-1-4">
-		<div class="header">
-			<h1 style="margin-bottom: 2em;" class="brand-title"><a href="/">Life Programming And Craft</a></h1>
-			<p class="brand-tagline">Hi, I am <strong>Wesley</strong></p>
-			<p style="line-height: 1.9em; font-weight: 400;">here you will find my interests on software engineering,
-				own opinions about life and random thoughts</p>
-		</div>
-		<div class="footer" style="padding: 10em 0 0; bottom: 0px;">
-			<nav class="pure-menu pure-menu-horizontal">
-				<ul class="pure-menu-list">
-					<li class="pure-menu-item"><a href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a>
-					</li>
-					<li class="pure-menu-item"><a href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a>
-					</li>
-					<li class="pure-menu-item"><a href="https://github.com/wesleyvicthor"
-												  class="pure-menu-link">GitHub</a></li>
-					<li class="pure-menu-item"><a href="https://www.quora.com/profile/Wesley-Victhor"
-												  class="pure-menu-link">Quora</a></li>
-					<li class="pure-menu-item"><a href="https://www.goodreads.com/user/show/85938821-wesley-victhor"
-												  class="pure-menu-link">Goodreads</a></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-	<div class="content pure-u-1 pure-u-md-3-4">
-		<div>
-			<div class="posts">
-				{{range .Posts}}
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <h1 style="margin-bottom: 2em;" class="brand-title"><a href="/">Life Programming And Craft</a></h1>
+            <p class="brand-tagline">Hi, I am <strong>Wesley</strong></p>
+            <p style="line-height: 1.9em; font-weight: 400;">here you will find my interests on software engineering,
+                own opinions about life and random thoughts</p>
+        </div>
+        <div class="footer">
+            <nav class="pure-menu pure-menu-horizontal">
+                <ul class="pure-menu-list">
+					<li class="pure-menu-item"><a target="_blank" title="LinkedIn" href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a></li>
+					<li class="pure-menu-item"><a target="_blank" title="Twitter" href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a></li>
+					<li class="pure-menu-item"><a target="_blank" title="Github" href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
+					<li class="pure-menu-item"><a target="_blank" title="Quora" href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
+					<li class="pure-menu-item"><a target="_blank" title="GoodReads" href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            <div class="posts">
+                {{range .Posts}}
 
-				{{else}}
-					<section class="post" itemid="https://wmsan.dev/{{.Post.ID}}" itemscope
-							 itemtype="https://schema.org/BlogPosting">
-						<header class="post-header" itemprop="description">
-							<h2 class="post-title" itemprop="headline">
-                                {{.Post.Headline}}
-							</h2>
-							<h4 itemscope="teaches">{{.Post.About}}</h4>
-							<p class="post-meta" itemprop="datePublished">{{.Post.Date}}</p>
-						</header>
-						<div style="font-weight: 100; line-height: 1.9em" class="pure-u-md-14-24 post-description"
-							 itemprop="articleBody">
-                            {{range .Post.Body}}
-								<p>
-                                    {{- . -}}
-								</p>
-                            {{end}}
-						</div>
-					</section>
-				{{end}}
-			</div>
-		</div>
-		<div class="footer" style="text-align: center">
-			<span>wsan 2020</span>
-			<nav class="pure-menu pure-menu-horizontal">
-				<ul class="pure-menu-list pure-u-md-1-3">
-					<li class="pure-menu-item"><a target="_blank" href="https://linkedin.com/in/wesleyvicthor" class="pure-menu-link">LinkedIn</a></li>
-					<li class="pure-menu-item"><a target="_blank" href="https://twitter.com/victhor_mendes" class="pure-menu-link">Twitter</a></li>
-					<li class="pure-menu-item"><a target="_blank" href="https://github.com/wesleyvicthor" class="pure-menu-link">GitHub</a></li>
-					<li class="pure-menu-item"><a target="_blank" href="https://www.quora.com/profile/Wesley-Victhor" class="pure-menu-link">Quora</a></li>
-					<li class="pure-menu-item"><a target="_blank" href="https://www.goodreads.com/user/show/85938821-wesley-victhor" class="pure-menu-link">Goodreads</a></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+                {{else}}
+                <section class="post" itemid="https://wmsan.dev/{{.Post.ID}}" itemscope
+                         itemtype="https://schema.org/BlogPosting">
+                    <header class="post-header" itemprop="description">
+                        <h2 class="post-title" itemprop="headline">
+                            {{.Post.Headline}}
+                        </h2>
+                        <h4 itemscope="teaches">{{.Post.About}}</h4>
+                        <p class="post-meta" itemprop="datePublished">{{.Post.Date}}</p>
+                    </header>
+                    <div style="font-weight: 100; line-height: 1.9em" class="pure-u-md-14-24 post-description"
+                         itemprop="articleBody">
+                        {{range .Post.Body}}
+                        <p>
+                            {{- . -}}
+                        </p>
+                        {{end}}
+                    </div>
+                </section>
+                {{end}}
+            </div>
+        </div>
+        <div class="footer" style="text-align: center">
+			<span>wsan 2020 - {{ .Year }}</span>
+            <nav class="pure-menu pure-menu-horizontal">
+                <ul class="pure-menu-list pure-u-md-1-3">
+                    <li class="pure-menu-item"><a target="_blank" href="https://linkedin.com/in/wesleyvicthor"
+                                                  class="pure-menu-link">LinkedIn</a></li>
+                    <li class="pure-menu-item"><a target="_blank" href="https://twitter.com/victhor_mendes"
+                                                  class="pure-menu-link">Twitter</a></li>
+                    <li class="pure-menu-item"><a target="_blank" href="https://github.com/wesleyvicthor"
+                                                  class="pure-menu-link">GitHub</a></li>
+                    <li class="pure-menu-item"><a target="_blank" href="https://www.quora.com/profile/Wesley-Victhor"
+                                                  class="pure-menu-link">Quora</a></li>
+                    <li class="pure-menu-item"><a target="_blank"
+                                                  href="https://www.goodreads.com/user/show/85938821-wesley-victhor"
+                                                  class="pure-menu-link">Goodreads</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
 </body>
 </html>
