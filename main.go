@@ -9,14 +9,24 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 )
 
 var t *template.Template
 
 type Page struct {
+	Year  int
 	Host  string
 	Post  Post
 	Posts []*Post
+}
+
+func NewPage(post Post) *Page {
+	return &Page{
+		Year: time.Now().Year(),
+		Host: "https://wmsan.dev",
+		Post: post,
+	}
 }
 
 func init() {
@@ -30,21 +40,17 @@ func me(w http.ResponseWriter, _ *http.Request) {
 func home(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path[1:]
 	if len(path) == 0 {
-		must(t.ExecuteTemplate(w, "home.html", Page{Host: "https://wmsan.dev"}))
+		must(t.ExecuteTemplate(w, "home.html", NewPage(Post{})))
 		return
 	}
+
 	f, err := os.Open(path + ".html")
 	if err != nil {
 		http.NotFound(w, r)
 		return
 	}
 
-	page := Page{
-		Host: "https://wmsan.dev",
-		Post: NewPost(f),
-	}
-
-	must(t.ExecuteTemplate(w, "post.html", page))
+	must(t.ExecuteTemplate(w, "post.html", NewPage(NewPost(f))))
 }
 
 func main() {
